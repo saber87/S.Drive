@@ -1,0 +1,119 @@
+{
+  "name": "sdrive",
+  "productName": "S.Drive tool",
+  "version": "0.9.3",
+  "description": "A desktop app to check the status of a hostname or URL and port.",
+  "main": "main.js",
+  "repository": "https://github.com/saber87",
+  "author": "SBS MIT Blackmoon",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.50",
+    "@electron-forge/maker-deb": "^6.0.0-beta.50",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.50",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.50",
+    "@electron-forge/maker-wix": "^6.0.0-beta.51",
+    "@electron-forge/maker-zip": "^6.0.0-beta.50",
+    "electron": "^8.2.4"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "start-mac": "/Applications/Electron.app/Contents/MacOS/Electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "build-installer": "electron-builder"
+  },
+  "build": {
+    "appId": "S-Drive Tool",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "app/icon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "installerIcon": "app/icon.ico",
+      "uninstallerIcon": "app/icon.ico",
+      "uninstallerDisplayName": "CPU Monitor",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-icons": "^1.0.0-alpha3",
+    "electron-builder": "^22.8.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "is-port-reachable": "^3.0.0",
+    "is-reachable": "^4.0.0",
+    "jquery": ">=3.5.0",
+    "moment": "^2.24.0",
+    "pkginfo": "^0.4.1",
+    "popper.js": "^1.14.7",
+    "tether": "^1.4.0",
+    "windows-network-drive": "^3.0.1"
+  },
+  "standard": {
+    "globals": [
+      "$"
+    ]
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "./app/icon.ico"
+      },
+      "electronPackagerConfig": {
+        "icon": "./app/icon.ico",
+        "asar": true
+      },
+      "electronWinstallerConfig": {
+        "name": "S-DirveTool",
+        "noMsi": false,
+        "author": "BMK MIT",
+        "exe": "SDrive.exe",
+        "description": "A desktop app connecting to network drives.",
+        "iconUrl": "./app/icon.ico"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-wix",
+          "config": {
+            "ui": {
+              "chooseDirectory": true
+            }
+          }
+        },
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "S-DriveTool",
+            "icon": "./app/icon.ico",
+            "setupIcon": "./app/icon.ico"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin",
+            "linux",
+            "win32"
+          ],
+          "config": {
+            "name": "S-DriveTool"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}

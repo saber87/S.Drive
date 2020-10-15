@@ -1,0 +1,110 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+
+h1 {
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eee;
+}
+
+.blank {
+  margin-top: 30px;
+}
+
+div.fl-right { float: right;}
+
+.psd
+{
+  font-size:0%;
+}
+
+
+tbody, tr {
+  margin: auto;
+  text-align: center;
+  font-weight: 500;
+}
+
+.mod {
+  margin: auto;
+  text-align: center;
+  font-weight: 500;
+}
+
+.sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+}
+
+.used {
+  color: red;
+  font-weight: 600;
+}
+.unused {
+  font-weight: 600;
+}
+
+/* Sidebar navigation */
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.sidebar .nav {
+  margin-top: 3px;
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  margin-top: 3px;
+  width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.sidebar .nav-link {
+  border-radius: 0;
+}
+
+.form-custom {
+  background-color:#daecff;
+}
+
+.form-template {
+  background-color: #c7e7e0;
+}
+
+.placeholders {
+  padding-bottom: 3rem;
+}
+
+.placeholder img {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* set cursor to default when hovering */
+a.navbar-brand{
+  cursor: default;
+}
+
+/* prevent a tags from click and dragging */
+a{
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}

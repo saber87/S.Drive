@@ -1,0 +1,24 @@
+[
+  {
+    "": "1",
+    "Select": "",
+    "IP Address": "pds-ent-nas02",
+    "Target": "ent_m01",
+    "Account": "pds\\administrator",
+    "Password": "gkqhdrl0909",
+    "Drive": "T",
+    "SMB": "",
+    "Status": ""
+  },
+  {
+    "": "2",
+    "Select": "",
+    "IP Address": "pds-ent-nas02",
+    "Target": "ent_m02",
+    "Account": "pds\\administrator",
+    "Password": "gkqhdrl0909",
+    "Drive": "Q",
+    "SMB": "",
+    "Status": ""
+  }
+]

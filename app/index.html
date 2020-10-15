@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="transitions.css">
+  <title>S-Drive Tool</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark fl-right">
+      <a class="navbar-brand" href="#">#</a>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-dark sidebar" id="nav-bar">
+
+        <div id="carousel-nav" class="carousel slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a class="nav-link btn-outline-info" id="load-urls" href="#">Import Config <span
+                      class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a id="convert-table" class="nav-link btn-outline-primary" href="#">Save as Default</a>
+                </li>
+                <div class="blank">
+                </div>
+                <li class="nav-item">
+                  <a class="nav-link btn-dark" id="help" href="#">SBS Webhard</a>
+                </li>
+                <li class="nav-item">
+                  <a id="about" class="nav-link btn-dark" href="#">About</a>
+                </li>
+                <div class="blank">
+                </div>
+                <li class="nav-item">
+                  <a class="nav-link btn-info" id="listcheck" href="#">Status Check</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-primary" id="mount-all" href="#">Mount All</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-danger" id="unmount-all" href="#">Unmount All</a>
+                </li>
+              </ul>
+            </div>
+            <div class="carousel-item">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a class="nav-link btn-outline-secondary" id="" href="#">Import Config <span
+                      class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a id="" class="nav-link btn-outline-secondary" href="#">Save as Default</a>
+                </li>
+                <div class="blank">
+                </div>
+                <li class="nav-item">
+                  <a class="nav-link btn-outline-secondary" id="" href="#">SBS Webhard</a>
+                </li>
+                <li class="nav-item">
+                  <a id="about" class="nav-link btn-outline-secondary" href="#">About</a>
+                </li>
+                <div class="blank">
+                </div>
+                <li class="nav-item">
+                  <a class="nav-link btn-outline-secondary" id="" href="#">Status Check</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-outline-secondary" id="" href="#">Mount All</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-outline-secondary" id="" href="#">Unmount All</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+
+      <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+        <div>
+          <h3>SBS Network Drive Tool <span class="badge badge-secondary">0.9.3</span></h3>
+          <br>
+        </div>
+        <div class="fl-right">
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-danger">
+              <input id="detect-button" type="checkbox" data-toggle="collapse"> Detective Mod
+            </label>
+          </div>
+        </div>
+        <p>
+          <button class="btn btn-primary" type="button" id="custom-button" data-toggle="collapse"
+            data-target="#collapseCustom" aria-expanded="false" aria-controls="collapseCustom">
+            Custom
+          </button>
+          <button class="btn btn-info" id="template-button" type="button" data-toggle="collapse"
+            data-target="#collapseTemplate" aria-expanded="false" aria-controls="collapseTemplate">
+            Template
+          </button>
+        </p>
+
+        <div class="collapse" id="collapseDetect">
+          <div class="card card-body bg-warning">
+
+            <h3>Detective Mod Activated</h3>
+
+            </form>
+          </div>
+        </div>
+
+
+
+
+        <div class="collapse" id="collapseTemplate">
+          <div class="card card-body">
+
+            <form id="add_form2">
+              <div class="form-row">
+                <div class="col-md-5 mb-3">
+                  <label for="validationServer01">NAS Server</label>
+                  <select class="custom-select form-template" id="srv_template"
+                    aria-describedby="validationServer04Feedback">
+                    <option selected disabled value="">Select..</option>
+                    <option value="PDS-CUL-NAS01">PDS 교양/종편 NAS1</option>
+                    <option value="PDS-CUL-NAS02">PDS 교양/종편 NAS2</option>
+                    <option value="PDS-ENT-NAS01">PDS 예능 NAS1</option>
+                    <option value="PDS-ENT-NAS02">PDS 예능 NAS2</option>
+                    <option value="PDS-DRA-NAS01">PDS 드라마 NAS1</option>
+                    <option value="PDS-DRA-NAS01">PDS 드라마 NAS2</option>
+                    <option value="10.40.24.121">NDS NAS1</option>
+                    <option value="10.40.24.122">NDS NAS2</option>
+                    <option value="10.40.24.123">NDS NAS3</option>
+                  </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationServer02">Shared Folder Name</label>
+                  <select class="custom-select form-template" id="target_template"
+                    aria-describedby="validationServer04Feedback">
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationServer04">Mount Drive</label>
+                  <select class="custom-select form-template drive" id="drive2"
+                    aria-describedby="validationServer04Feedback">
+                    <option selected disabled value="">Select..</option>
+                    <option>B</option>
+                    <option>M</option>
+                    <option>K</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="validationServer03">Account Name</label>
+                  <input type="text" class="form-control form-template" id="account2">
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label for="validationServer05">Password</label>
+                  <input type="password" class="form-control form-template" id="password2"
+                    aria-describedby="validationServer05Feedback">
+                </div>
+
+              </div>
+              <button class="btn btn-info" id="add-row2" type="submit">Add Connection</button>
+              <button class="btn btn-outline-info listdrive" id="Refresh" type="submit">Refresh Drive</button>
+
+            </form>
+          </div>
+        </div>
+
+
+        <div class="collapse show" id="collapseCustom">
+          <div class="card card-body">
+
+            <form id="add_form">
+              <div class="form-row">
+                <div class="col-md-5 mb-3">
+                  <label for="validationServer01">IP Address or Domain</label>
+                  <input type="text" class="form-control form-custom" id="address"
+                    placeholder="Example 127.0.0.1 or PDS-CUL-NAS01">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationServer02">Shared Folder Name</label>
+                  <input type="text" class="form-control form-custom" id="folder" placeholder="Example nds_m01">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationServer04">Mount Drive</label>
+                  <select class="custom-select form-custom drive" id="drive"
+                    aria-describedby="validationServer04Feedback">
+                    <option selected disabled value="">Select..</option>
+                    <option>B</option>
+                    <option>M</option>
+                    <option>K</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="validationServer03">Account Name</label>
+                  <input type="text" class="form-control form-custom" id="account">
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label for="validationServer05">Password</label>
+                  <input type="password" class="form-control form-custom" id="password"
+                    aria-describedby="validationServer05Feedback">
+                </div>
+
+              </div>
+              <button class="btn btn-primary" id="add-row" type="submit">Add Connection</button>
+              <button class="btn btn-outline-primary listdrive" id="Refresh" type="submit">Refresh Drive</button>
+
+            </form>
+          </div>
+        </div>
+        <br />
+
+        <div class="table-responsive">
+
+          <table id="urltable" class="table table-striped urltable">
+            <thead>
+              <tr>
+                <!--
+                <th></th>
+                <th>Select</th>
+                <th>IP Address</th>
+                <th>Target</th>
+                <th>Account</th>
+                <th class="psd">Password</th>
+                <th>Drive</th>
+                <th>SMB</th>
+                <th>Status</th>
+              -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!--
+                <td id="id" class="id">1</td>
+                <td><input type="checkbox" name="record"></td>
+                <td>127.0.0.1</td>
+                <td>E</td>
+                <td></td>
+                <td class="psd">123</td>
+                <td>H</td>
+                <td class="status"><img src="assets/icons/question-circle.svg" role="img" alt="" width="16" height="16" title="Unknown"></td>
+                <td class="status"><img src="assets/icons/question-circle.svg" role="img" alt="" width="16" height="16" title="Unknown"></td>
+              </td>
+            -->
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="button" id="mount-button" class="btn btn-primary mount">Mount</button>
+          <button type="button" id="unmount-button" class="btn btn-outline-primary unmount">Unmount</button>
+          <div class="fl-right">
+            <button type="button" id="clear-button" class="btn btn-secondary delete-row">Clear</button>
+            <button type="button" id="clear-all" class="btn btn-dark clear">Clear All</button>
+
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="invalidinput" tabindex="-1" role="dialog" aria-labelledby="invalidinputLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="invalidinputLabel">Invalid Input</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          The value of the hostname and drive letter cannot be left blank.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="aboutModalCenter" tabindex="-1" role="dialog" aria-labelledby="aboutModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLongTitle">About</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="date"></p>
+          <p class="version"></p>
+          <p class="author"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="saveurlsModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="saveurlsModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="saveurlsModalLongTitle">Save List</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Drive List was successfully saved!</p>
+          <p class="savefile"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="loadurlsModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="loadurlsModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loadurlsModalLongTitle">Import Config file (Json)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+
+          <div class="form-group2">
+            <!--<label for="InputSubject1">Load Json</label> -->
+            <input class="form-control2" id="fileInput" filestyle="" type="file" data-class-button="btn btn-default"
+              data-class-input="form" data-button-text="123">
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" id="loadurls_submit" class="btn btn-primary" data-dismiss="modal">Import</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="error_modal" tabindex="-1" role="dialog" aria-labelledby="saveurlsModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="saveurlsModalLongTitle">Error</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>요청하신 작업을 완료하지 못했습니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="alreadyunmounted" tabindex="-1" role="dialog" aria-labelledby="saveurlsModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="saveurlsModalLongTitle">Error</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>요청하신 작업을 완료하지 못했습니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="mountlist" tabindex="-1" role="dialog" aria-labelledby="saveurlsModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="saveurlsModalLongTitle">System Mounted Drive List</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mounted">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="renderer.js"></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/moment/moment.js"></script>
+<script src="jquery.tabletojson.min.js"></script>
+<script src="setup.js"></script>
+<script src="app.js"></script>
+
+</html>
